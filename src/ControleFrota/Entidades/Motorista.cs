@@ -1,18 +1,29 @@
 namespace ControleFrota.Entidades;
 
-public class Motorista 
+using ControleFrota.Entidades.Abstracoes;
+
+public class Motorista : Pessoa
 {
-    public Motorista(string nome, int matricula, string cnh)
+    public Motorista(string nome, int matricula, string cnh, string cpf)
+        : base(nome, cpf)
     {
-        Nome = nome;
         Matricula = matricula;
         Cnh = cnh;
     }
 
-    public string Nome { get; }
     public int Matricula { get; }
     public string Cnh { get; }
     public Carro? Veiculo { get; set; }
+
+    public override string GetTipo()
+    {
+        return "Motorista";
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + ":[matricula=" + Matricula + ", cnh=" + Cnh + ", carro=" + Veiculo + "]";
+    }    
 
     public void Acelerar() 
     {
@@ -30,10 +41,5 @@ public class Motorista
         }
 
         Veiculo.Acelerar(limite);
-    }
-
-    public override string ToString()
-    {
-        return "Motorista [nome=" + Nome + ", matricula=" + Matricula + ", cnh=" + Cnh + ", carro=" + Veiculo + "]";
     }
 }
