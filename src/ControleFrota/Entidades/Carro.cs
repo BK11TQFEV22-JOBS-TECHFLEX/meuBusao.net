@@ -50,14 +50,14 @@ public class Carro
         Regex regex = new Regex("[A-Z]{3}[0-9]{4}", RegexOptions.IgnoreCase);
 
         if (placa.Length != 7 || !regex.IsMatch(placa)) {
-            throw new ArgumentException("Placa inválida");
+            throw new ArgumentException("Placa inválida!");
         }
     }
 
     private void ValidarChassi(int chassi)
     {
         if (chassi < 1000000 || chassi > 9999999) {
-            throw new ArgumentException("Chassi inválido");
+            throw new ArgumentException("Chassi inválido!");
         }
     }    
 }
